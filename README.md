@@ -1,20 +1,15 @@
 # Vodly Url Shortener
 
-Visit 
-Things you may want to cover:
+Visit http://vodly.herokuapp.com/ to see this app in action.
 
-* Ruby version
+## Local installation
 
-* System dependencies
+* fork and clone
 
-* Configuration
+* bundle install
 
-* Database creation
+* run rake db:create db:migrate
 
-* Database initialization
+* run rake db:seed to get some seed data for links
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* run to see the test suite

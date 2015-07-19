@@ -10,8 +10,8 @@
     <ol>
       <% @sites.each do |site| %>
         <li>
-          <p><%= link_to site.original_url, "#{Rails.root}/#{site.short_url_code}" %>
-          ♦ short url: <%= link_to "#{Rails.root}/#{site.short_url_code}", "#{Rails.root}/#{site.short_url_code}" %> ♦ visits: <%= site.visits %> </p>
+          <p><%= link_to site.original_url, "#{request.original_url}#{site.short_url_code}" %>
+          ♦ short url: <%= link_to "#{request.url}#{site.short_url_code}", "#{request.original_url}#{site.short_url_code}" %> ♦ visits: <%= site.visits %> </p>
         </li>
       <% end %>
     </ol>
