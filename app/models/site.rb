@@ -10,7 +10,7 @@ class Site < ActiveRecord::Base
     url = chars[id%35]
     n = Math.log(id, 35).floor
     n.times do 
-      url += @chars[id/35**n]
+      url += chars[id/35**n]
     end
     url
   end
