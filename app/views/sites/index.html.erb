@@ -1,0 +1,19 @@
+<%= render 'form' %>
+
+<div class="row">
+  <div id="shortened-link"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+    <h2>most popular sites</h2>
+    <ol>
+      <% @sites.each do |site| %>
+        <li>
+          <p><%= link_to site.original_url, "#{root_path}#{site.short_url_code}" %>
+          ♦ short url: <%= link_to "#{root_path}#{site.short_url_code}", "#{root_path}#{site.short_url_code}" %> ♦ visits: <%= site.visits %> </p>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</div>

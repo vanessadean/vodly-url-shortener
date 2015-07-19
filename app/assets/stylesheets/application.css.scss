@@ -1,0 +1,53 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap"; 
+@import url(http://fonts.googleapis.com/css?family=Audiowide);
+
+body {
+  background-color: black;
+}
+
+h1 {
+  color: #B0254F;
+  font-family: Audiowide;
+}
+
+h2 {
+  color: #B0254F;
+  font-family: Audiowide;
+}
+
+h3 {
+  color: #EB9605;
+  font-family: Audiowide;
+}
+
+p {
+  color: #EB9605;
+}
+
+ol, li  {
+  color: #EB9605;
+}
+
+form {
+  color: #EB9605;
+}
+
+#shortened-link {
+  margin-top: 25px;
+}
