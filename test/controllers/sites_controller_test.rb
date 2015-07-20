@@ -2,7 +2,9 @@ require 'test_helper'
 
 class SitesControllerTest < ActionController::TestCase
   setup do
-    @site = sites(:one)
+    @site = Site.create(original_url: "http://vanessadean.github.io/")
+    @site.set_short_code
+    @site.save
   end
 
   test "should get index" do
@@ -18,25 +20,15 @@ class SitesControllerTest < ActionController::TestCase
 
   test "should create site" do
     assert_difference('Site.count') do
-      post :create, site: { original_url: @site.original_url, short_url: @site.short_url, visits: @site.visits }
+      post :create, site: { original_url: @site.original_url, short_url_code: @site.short_url_code, visits: @site.visits }
     end
 
-    assert_redirected_to site_path(assigns(:site))
+    assert_response :redirect
   end
 
   test "should show site" do
     get :show, id: @site
     assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @site
-    assert_response :success
-  end
-
-  test "should update site" do
-    patch :update, id: @site, site: { original_url: @site.original_url, short_url: @site.short_url, visits: @site.visits }
-    assert_redirected_to site_path(assigns(:site))
   end
 
   test "should destroy site" do

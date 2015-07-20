@@ -16,6 +16,7 @@ class SitesController < ApplicationController
   end
 
   def new
+    @site = Site.new
   end
   
   def create
@@ -24,7 +25,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
+        format.html { redirect_to @site }
         format.json { render :show, status: :created, location: @site }
       else
         format.html { render :new }
