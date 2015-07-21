@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
   validates :original_url, presence: true
-  after_save :validate_url
+  after_create :validate_url
 
   def set_short_code
     self.short_url_code = url_maker(self.id)
