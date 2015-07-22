@@ -20,11 +20,11 @@ class SitesController < ApplicationController
   end
   
   def create
-    req = `ping -c 1 "#{site_params[:original_url]}"`
+    @site = Site.new(original_url: site_params[:original_url])
+    @site.set_http
+    request = Net::HTTP.get(URI(@site.original_url)) rescue nil
 
-    if !req.blank?
-      @site = Site.create(original_url: site_params[:original_url])
-      @site.set_short_code
+    if !request.nil?
       @site.save
 
       redirect_to @site
