@@ -22,7 +22,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(original_url: site_params[:original_url])
     @site.set_http
-    request = Net::HTTP.get(URI(@site.original_url)) rescue nil
+    request = HTTParty.get(@site.original_url) rescue nil
 
     if !request.nil?
       @site.save
