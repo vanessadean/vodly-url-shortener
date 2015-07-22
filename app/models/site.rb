@@ -23,7 +23,7 @@ class Site < ActiveRecord::Base
 
   private
   def validate_url
-    if !original_url.match(/^http:\/\//)
+    if !original_url.match(/^http/)
       self.original_url = "http://#{original_url}"
       self.save
     end
