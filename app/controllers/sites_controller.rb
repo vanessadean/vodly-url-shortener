@@ -20,17 +20,16 @@ class SitesController < ApplicationController
   end
   
   def create
-    @site = Site.create(original_url: site_params[:original_url])
-    @site.set_short_code
+    req = `ping -c 1 "#{site_params[:original_url]}"`
 
-    respond_to do |format|
-      if @site.save
-        format.html { redirect_to @site }
-        format.json { render :show, status: :created, location: @site }
-      else
-        format.html { render :new }
-        format.json { render json: @site.errors, status: :unprocessable_entity }
-      end
+    if !req.blank?
+      @site = Site.create(original_url: site_params[:original_url])
+      @site.set_short_code
+      @site.save
+
+      redirect_to @site
+    else
+      render :new
     end
   end
 

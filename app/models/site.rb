@@ -1,6 +1,5 @@
 class Site < ActiveRecord::Base
-  validates :original_url, presence: true
-  after_create :validate_url
+  before_create :check_for_http
 
   def set_short_code
     self.short_url_code = url_maker(self.id)
@@ -22,10 +21,9 @@ class Site < ActiveRecord::Base
   end
 
   private
-  def validate_url
+  def check_for_http
     if !original_url.match(/^http/)
       self.original_url = "http://#{original_url}"
-      self.save
     end
   end
 end
