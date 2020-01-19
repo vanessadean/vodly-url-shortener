@@ -9,17 +9,21 @@ class Site < ActiveRecord::Base
   end
 
   def set_short_code
-    self.short_url_code = url_maker(self.id)
-    self.save
+    update(short_url_code: url_coder)
   end
 
-  def url_maker(id)
-    @chars = get_chars
-    @base = @chars.length #62
-    url = @chars[id % @base]
-    n = Math.log(id, @base).floor
+  private
+
+  def url_coder
+    chars = get_chars
+    base = chars.length #62
+    id_number = id - 1
+    url = chars[id_number % base]
+    return url if id_number < 1
+
+    n = Math.log(id_number, base).floor
     n.times do 
-      url += @chars[id/@base**n]
+      url = chars[id/base**n - 1] + url
     end
     url
   end
